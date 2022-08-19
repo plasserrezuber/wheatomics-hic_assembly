@@ -1,27 +1,28 @@
 # Description  
 
 ## Work directory:
-dir=/home/fchoulet/data/projects/wheatomics/ontRenan/v11/qa/isbp/
-Quality assignment and pseudomolecule construction based on CS-ISBP BLAST versus Renan_v11
-5M ISBPs from CS were BLASTED against Renan_v11 by Cécile Monat
-Results were filtered: 1 HIT 1 HSP >98%ID >90%ov
-file=/home/cmonat/Renan_v11/OK_ISBP_99_ov_max_no_N_no_MAPQ_equal_0_CS_sorted_vs_Renan_v11_i80_qov90_mHSP1_mTS11_bestHit
-Only_iSup98.bltn
-We want to use these ISBPs to order and orientate (and check chimeric Renan scaff)
-Development of assigner.pl
-_ The script analyze ISBP matches between CS and Renan
-_ Foreach scaffold -> order the matches according to CS-chr position of ISBPs
-_ Consider pairs of adjacent ISBPs (that have matched)
-_ Calculate the distance separating neighbor ISBPs on CS + on Renan scaff
-_ Use a distance threshold (default=50kb) to consider a valid pair
-_ Classify valid versus nonvalid pairs
-_ Count, for each scaff, the % of valid pairs by chromosome (ex: 90% on chr1A, 10% on chr2A)
-_ Calculate the median position of CS-ISBPs that are within valid pairs
-_ Determine the orientation of Renan scaff based on majority rule of ISBP matches (+/+ or +/-)
-_ Print data in CSV format
-I tried 3 distance thresholds: 50kb 100kb 200kb (to consider a valid ISBP pair)
-for i in 50000 100000 200000 ; do ./assigner.pl -d $i $file > scaffAssignment.$i.csv 2>scaffAssignment.$i.log ; done
-Example for scaffold_1
+dir=/home/fchoulet/data/projects/wheatomics/ontRenan/v11/qa/isbp/  
+Quality assignment and pseudomolecule construction based on CS-ISBP BLAST versus Renan_v11  
+5M ISBPs from CS were BLASTED against Renan_v11 by Cécile Monat  
+Results were filtered: 1 HIT 1 HSP >98%ID >90%ov  
+file=/home/cmonat/Renan_v11/OK_ISBP_99_ov_max_no_N_no_MAPQ_equal_0_CS_sorted_vs_Renan_v11_i80_qov90_mHSP1_mTS11_bestHit  
+Only_iSup98.bltn  
+We want to use these ISBPs to order and orientate (and check chimeric Renan scaff)  
+Development of assigner.pl  
+_ The script analyze ISBP matches between CS and Renan  
+_ Foreach scaffold -> order the matches according to CS-chr position of ISBPs  
+_ Consider pairs of adjacent ISBPs (that have matched)  
+_ Calculate the distance separating neighbor ISBPs on CS + on Renan scaff  
+_ Use a distance threshold (default=50kb) to consider a valid pair  
+_ Classify valid versus nonvalid pairs  
+_ Count, for each scaff, the % of valid pairs by chromosome (ex: 90% on chr1A, 10% on chr2A)  
+_ Calculate the median position of CS-ISBPs that are within valid pairs  
+_ Determine the orientation of Renan scaff based on majority rule of ISBP matches (+/+ or +/-)  
+_ Print data in CSV format  
+I tried 3 distance thresholds: 50kb 100kb 200kb (to consider a valid ISBP pair)  
+for i in 50000 100000 200000 ; do ./assigner.pl -d $i $file > scaffAssignment.$i.csv 2>scaffAssignment.$i.log ; done  
+Example for scaffold_1  
+```bash
 #scaff length chr nb_valid_pairs percent_valid_pairs median ori ori%
 Taestivum_RENAN_scaffold_1 251657134 chr2A 73075 99 571205030 1 90
 Taestivum_RENAN_scaffold_1 251657134 chr2D 75 0 439979109 1 85
@@ -39,12 +40,10 @@ Taestivum_RENAN_scaffold_1 251657134 chr6D 2 0 1213543 -1 100
 Taestivum_RENAN_scaffold_1 251657134 chr4D 1 0 30691766 1 100
 Taestivum_RENAN_scaffold_1 251657134 chr3D 1 0 239096369 1 100
 Taestivum_RENAN_scaffold_1 251657134 chr3B 1 0 731535664 1 100
-ex: 99% of valid ISBP pairs (<50kb) fall into chr2A - orientation=1 (+ strand) because 90% of valid ISBPs have
-matches on + strand
+```
+ex: 99% of valid ISBP pairs (<50kb) fall into chr2A - orientation=1 (+ strand) because 90% of valid ISBPs have matches on + strand
 
-# Consider a minimum % of valid pairs to assign a scaffold to a chromosome
-# with >50%
-# + order the scaffolds based on the median value
+## Consider a minimum % of valid pairs to assign a scaffold to a chromosome with >50% + order the scaffolds based on the median value
 ```bash
 for i in 50000 100000 200000 ; do cat scaffAssignment.$i.csv | awk '$5>50 {print}' | sort -k3,3 -k6,6n | cut -f1,2,3,7
 > scaffAssignment.$i.csv.order.orientation.csv; done
