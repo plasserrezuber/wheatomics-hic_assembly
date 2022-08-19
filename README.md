@@ -63,9 +63,9 @@ See [GDEC's Wiki](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
 frederic.choulet@inrae.fr, pauline.lasserre-zuber@inrae.fr, helene.rimbert@inrae.fr, jmaury@genoscope.cns.fr
 
 ## Roadmap  
-Assemble unanchored yet scaffolds
-Introgressions studies
-UTR and alternative transcripts annotation: in progress, contact helene.rimbert@inrae.fr
+Assemble unanchored yet scaffolds  
+Introgressions studies  
+UTR and alternative transcripts annotation: in progress, contact helene.rimbert@inrae.fr  
 
 ## Authors and acknowledgment  
 Jean-Marc AURY (Genoscope), Frederic CHOULET (INRAe), Cecile MONAT, Helene RIMBERT (INRAe), Philippe LEROY (INRAe), Nathan PAPON (INRAe)
