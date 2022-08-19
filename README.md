@@ -1,93 +1,75 @@
 # hic_assembly
 
-hic assembly of Renan genome
+hic assembly of Renan genome, WHEATOMICS project, WP1
 from /home/palasser/wheatomics_wp1/hic_assembly_TaeRenan_v2.0 on HPC2 cluster
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## Git repository initialization
 
 ```
-cd existing_repo
-git remote add origin https://forgemia.inra.fr/gdec-bioinfo/wheatomics/hic_assembly.git
+cd /home/palasser/wheatomics_wp1/hic_assembly
+git remote add hic https://forgemia.inra.fr/gdec-bioinfo/wheatomics/hic_assembly.git
+git status
+git add bin/*
+git commit -m "initial commit"
+git push -u hic --all
 git branch -M main
-git push -uf origin main
+git branch -a
+git fetch hic main
+git pull hic main
 ```
 
-## Integrate with your tools
+## Description  
+The goal of this part of the project is to assemble the genome of the bread wheat French culivar Renan.
+Input data are Oxford Nanopore Technology sequences assembled into 2904 scaffolds:
 
-- [ ] [Set up project integrations](https://forgemia.inra.fr/gdec-bioinfo/wheatomics/hic_assembly/-/settings/integrations)
+Input data are on TGCC cluster: /ccc/genostore/cont007/fg0118/fg0118/assemblies
+Triticum_aestivum_RENAN_v2.fasta
+Triticum_aestivum_RENAN_v2.stats
 
-## Collaborate with your team
+#-------------------- GLOBAL STATISTICS -------------------#
+N50 size= 48460660  number= 79
+N80 size= 14449349  number= 241
+N90 size= 7948299  number= 376
+Cumulative size= 14259284930 number= 2904 minSize= 30021 maxSize= 253607342 averageSize= 4910222 auN= 67017177
+#----------------------------------------------------------#
+#-------------------- SIZE REPARTITION --------------------#
+Size= >= 10000000       Number= 315        (10.85)      CumulativeSize= 12293093327     (86.21)
+Size= >= 5000000        Number= 467        (16.08)      CumulativeSize= 13418180023     (94.10)
+Size= >= 1000000        Number= 706        (24.31)      CumulativeSize= 14032844541     (98.41)
+Size= >= 100000         Number= 1283       (44.18)      CumulativeSize= 14154985870     (99.27)
+Size= >= 50000          Number= 2451       (84.40)      CumulativeSize= 14241435579     (99.87)
+Size= >= 10000          Number= 2904       (100.00)     CumulativeSize= 14259284930     (100.00)
+#----------------------------------------------------------#
+#-------------------- BASE COMPOSITION --------------------#
+NumberOfN= 258162674 (1.81%) NumberOfGC= 6480316918 (46.28%)
+#----------------------------------------------------------#
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+These scaffolds have been oredered and assembled into 21 pseudomolecules based on ISBPs colinearity with iwgsc_refseqv1.
+HiC data sequence (35X, Arima) have then been mapped on such ordered scaffolds to produce a HiC map with juicer and 3d-dna.
+The draft assembly has been improved using Juicebox Assembly Tools software.
+Final TaeRenan_v2.0 reference genome has been finaly built with scripts developped at GDEC research unit (nCount.pl, closestGAP.py, subseq.pl, buildPseudomol.pl).
 
-## Test and Deploy
+## Issue
+It was far enough to use 40Gb of raw HiC sequences as input in order to obtain reliable results. 
+More than 40Gb were not necessary and make the analysis technically complicated and very long.
 
-Use the built-in continuous integration in GitLab.
+## HiC map  
+![HiCmap](/Renan_v13_v2.pseudo.v2.0.svg)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## Knowledge transmission
+See [GDEC's Wiki](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
 
-***
+## Support  
+frederic.choulet@inrae.fr, pauline.lasserre-zuber@inrae.fr, helene.rimbert@inrae.fr, jmaury@genoscope.cns.fr
 
-# Editing this README
+## Roadmap  
+Assemble unanchored yet scaffolds
+Introgressions studies
+UTR and alternative transcripts annotation: in progress, contact helene.rimbert@inrae.fr
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Authors and acknowledgment  
+Jean-Marc AURY (Genoscope), Frederic CHOULET (INRAe), Cecile MONAT, Helene RIMBERT (INRAe), Philippe LEROY (INRAe), Nathan PAPON (INRAe)
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Project status  
+Finished.
+Paper on line: [Long-read and chromosome-scale assembly of the hexaploid wheat genome achieves high resolution for research and breeding](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giac034/6575388)
