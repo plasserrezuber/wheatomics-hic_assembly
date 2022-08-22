@@ -69,8 +69,8 @@ Introgressions studies
 UTR and alternative transcripts annotation: in progress, contact helene.rimbert@inrae.fr  
 
 ## Authors and acknowledgment  
-Jean-Marc AURY (Genoscope), Frederic CHOULET (INRAe), Cecile MONAT, Helene RIMBERT (INRAe), Philippe LEROY (INRAe), Nathan PAPON (INRAe)
+Pauline LASSERRE-ZUBER (INRAe), Frederic CHOULET (INRAe), Cecile MONAT, Jean-Marc AURY (Genoscope)  
 
 ## Project status  
-Finished.
+Finished.  
 Paper on line: [Long-read and chromosome-scale assembly of the hexaploid wheat genome achieves high resolution for research and breeding](https://academic.oup.com/gigascience/article/doi/10.1093/gigascience/giac034/6575388)
