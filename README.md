@@ -12,6 +12,7 @@ git status
 git add bin/*
 git commit -m "initial commit"
 git push -u hic --all
+#merge request
 git branch -M main
 git branch -a
 git fetch hic main
