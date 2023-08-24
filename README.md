@@ -3,26 +3,6 @@
 hic assembly of Renan genome, WHEATOMICS project, WP1
 from /home/palasser/projects/wheatomics_wp1/hic_assembly on HPC2 cluster
 
-## Git repository initialization
-
-```
-## local git repository
-cd /home/palasser/projects/wheatomics_wp1/hic_assembly
-git init
-git add bin/*
-git commit -m "initial commit"
-git status
-## remote git repository
-git remote add hic https://forgemia.inra.fr/gdec-bioinfo/wheatomics/hic_assembly.git
-git push -u hic --all
-## merge request
-## local git repository
-git branch -M main
-git branch -a
-git fetch hic main
-git pull hic main
-```
-
 ## Description  
 The goal of this part of the project is to assemble the genome of the bread wheat French culivar Renan.
 Input data are Oxford Nanopore Technology sequences assembled into 2904 scaffolds:
@@ -59,7 +39,7 @@ It was far enough to use 40Gb of raw HiC sequences as input in order to obtain r
 More than 40Gb were not necessary and make the analysis technically complicated and very long.
 
 ## HiC map  
-![HiCmap](/Renan_v13_v2.pseudo.v2.0.svg)
+![HiCmap](/Renan_v13_v2.pseudo.v2.0.svg =309x148)
 
 ## Knowledge transmission
 See [GDEC's Wiki](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
