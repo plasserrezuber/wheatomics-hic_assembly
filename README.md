@@ -1,7 +1,7 @@
 # hic_assembly
 
-hic assembly of Renan genome, WHEATOMICS project, WP1
-from /home/palasser/projects/wheatomics_wp1/hic_assembly on HPC2 cluster
+hic assembly of Renan genome, WHEATOMICS project, WP1.  
+from /home/login/projects/wheatomics_wp1/hic_assembly on HPC2 cluster (Université Clermont-Auvergne, France).  
 
 ## Description  
 The goal of this part of the project is to assemble the genome of the bread wheat French culivar Renan.
@@ -39,10 +39,10 @@ It was far enough to use 40Gb of raw HiC sequences as input in order to obtain r
 More than 40Gb were not necessary and make the analysis technically complicated and very long.
 
 ## HiC map  
-![HiCmap](/Renan_v13_v2.pseudo.v2.0.svg =309x148)
+![HiCmap](/Renan_v13_v2.pseudo.v2.0.svg)
 
 ## Knowledge transmission
-See [GDEC's Wiki](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
+See [GDEC's Wiki: howto HiC](https://wiki.inra.fr/wiki/umr1095/Project+Bioinfo/howto-hic)
 
 ## Support  
 frederic.choulet@inrae.fr, pauline.lasserre-zuber@inrae.fr, helene.rimbert@inrae.fr, jmaury@genoscope.cns.fr
